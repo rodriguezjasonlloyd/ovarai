@@ -19,11 +19,11 @@ jobs:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
             artifact_name: ovarai
-            asset_name: ovarai-linux-x86_64
+            asset_name: ovarai-x86_64-unknown-linux-gnu
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             artifact_name: ovarai.exe
-            asset_name: ovarai-windows-x86_64.exe
+            asset_name: ovarai-x86_64-pc-windows-msvc.exe
 
     steps:
       - uses: actions/checkout@v4
