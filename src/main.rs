@@ -27,8 +27,23 @@ fn render(frame: &mut Frame, app: &App) -> () {
 fn render_main_menu(frame: &mut Frame, app: &App) {
     let chunks = Layout::default()
         .direction(Direction::Vertical)
-        .constraints([Constraint::Min(0), Constraint::Length(3)])
+        .constraints([
+            Constraint::Length(3),
+            Constraint::Min(0),
+            Constraint::Length(3),
+        ])
         .split(frame.area());
+
+    let header = Paragraph::new(format!("OvarAI v{}", env!("CARGO_PKG_VERSION")))
+        .style(
+            Style::default()
+                .fg(Color::Cyan)
+                .add_modifier(Modifier::BOLD),
+        )
+        .alignment(Alignment::Center)
+        .block(Block::default().borders(Borders::ALL));
+
+    frame.render_widget(header, chunks[0]);
 
     let list = List::new(
         MainMenuItem::all()
@@ -53,21 +68,36 @@ fn render_main_menu(frame: &mut Frame, app: &App) {
             .title(Line::from("Main Menu").centered()),
     );
 
-    frame.render_widget(list, chunks[0]);
+    frame.render_widget(list, chunks[1]);
 
     let footer = Paragraph::new("↑/k: Up | ↓/j: Down | Enter: Select | q: Quit")
         .style(Style::default().fg(Color::DarkGray))
         .alignment(Alignment::Center)
         .block(Block::default().borders(Borders::ALL));
 
-    frame.render_widget(footer, chunks[1]);
+    frame.render_widget(footer, chunks[2]);
 }
 
 fn render_analyze_menu(frame: &mut Frame, app: &App) {
     let chunks = Layout::default()
         .direction(Direction::Vertical)
-        .constraints([Constraint::Min(0), Constraint::Length(3)])
+        .constraints([
+            Constraint::Length(3),
+            Constraint::Min(0),
+            Constraint::Length(3),
+        ])
         .split(frame.area());
+
+    let header = Paragraph::new(format!("OvarAI v{}", env!("CARGO_PKG_VERSION")))
+        .style(
+            Style::default()
+                .fg(Color::Cyan)
+                .add_modifier(Modifier::BOLD),
+        )
+        .alignment(Alignment::Center)
+        .block(Block::default().borders(Borders::ALL));
+
+    frame.render_widget(header, chunks[0]);
 
     let list = List::new(
         AnalyzeMenuItem::all()
@@ -92,21 +122,36 @@ fn render_analyze_menu(frame: &mut Frame, app: &App) {
             .title(Line::from("Analyze").centered()),
     );
 
-    frame.render_widget(list, chunks[0]);
+    frame.render_widget(list, chunks[1]);
 
     let footer = Paragraph::new("↑/k: Up | ↓/j: Down | Enter: Select | q: Back")
         .style(Style::default().fg(Color::DarkGray))
         .alignment(Alignment::Center)
         .block(Block::default().borders(Borders::ALL));
 
-    frame.render_widget(footer, chunks[1]);
+    frame.render_widget(footer, chunks[2]);
 }
 
 fn render_experiment_menu(frame: &mut Frame, app: &App) {
     let chunks = Layout::default()
         .direction(Direction::Vertical)
-        .constraints([Constraint::Min(0), Constraint::Length(3)])
+        .constraints([
+            Constraint::Length(3),
+            Constraint::Min(0),
+            Constraint::Length(3),
+        ])
         .split(frame.area());
+
+    let header = Paragraph::new(format!("OvarAI v{}", env!("CARGO_PKG_VERSION")))
+        .style(
+            Style::default()
+                .fg(Color::Cyan)
+                .add_modifier(Modifier::BOLD),
+        )
+        .alignment(Alignment::Center)
+        .block(Block::default().borders(Borders::ALL));
+
+    frame.render_widget(header, chunks[0]);
 
     let list = List::new(
         ExperimentMenuItem::all()
@@ -131,21 +176,36 @@ fn render_experiment_menu(frame: &mut Frame, app: &App) {
             .title(Line::from("Experiment").centered()),
     );
 
-    frame.render_widget(list, chunks[0]);
+    frame.render_widget(list, chunks[1]);
 
     let footer = Paragraph::new("↑/k: Up | ↓/j: Down | Enter: Select | q: Back")
         .style(Style::default().fg(Color::DarkGray))
         .alignment(Alignment::Center)
         .block(Block::default().borders(Borders::ALL));
 
-    frame.render_widget(footer, chunks[1]);
+    frame.render_widget(footer, chunks[2]);
 }
 
 fn render_showcase_menu(frame: &mut Frame, app: &App) {
     let chunks = Layout::default()
         .direction(Direction::Vertical)
-        .constraints([Constraint::Min(0), Constraint::Length(3)])
+        .constraints([
+            Constraint::Length(3),
+            Constraint::Min(0),
+            Constraint::Length(3),
+        ])
         .split(frame.area());
+
+    let header = Paragraph::new(format!("OvarAI v{}", env!("CARGO_PKG_VERSION")))
+        .style(
+            Style::default()
+                .fg(Color::Cyan)
+                .add_modifier(Modifier::BOLD),
+        )
+        .alignment(Alignment::Center)
+        .block(Block::default().borders(Borders::ALL));
+
+    frame.render_widget(header, chunks[0]);
 
     let list = List::new(
         ShowcaseMenuItem::all()
@@ -170,14 +230,14 @@ fn render_showcase_menu(frame: &mut Frame, app: &App) {
             .title(Line::from("Showcase").centered()),
     );
 
-    frame.render_widget(list, chunks[0]);
+    frame.render_widget(list, chunks[1]);
 
     let footer = Paragraph::new("↑/k: Up | ↓/j: Down | Enter: Select | q: Back")
         .style(Style::default().fg(Color::DarkGray))
         .alignment(Alignment::Center)
         .block(Block::default().borders(Borders::ALL));
 
-    frame.render_widget(footer, chunks[1]);
+    frame.render_widget(footer, chunks[2]);
 }
 
 fn run(mut terminal: DefaultTerminal) -> Result<()> {
