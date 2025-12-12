@@ -1019,7 +1019,7 @@ dependencies = [
 
 [[package]]
 name = "ovarai"
-version = "0.2.4"
+version = "0.2.5"
 dependencies = [
  "color-eyre",
  "crossterm 0.29.0",
