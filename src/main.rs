@@ -1,6 +1,7 @@
 mod app;
+mod updater;
 
-use color_eyre::eyre::{Ok, Result};
+use color_eyre::eyre::Result;
 use crossterm::event::{self, Event, KeyEventKind};
 use ratatui::{
     DefaultTerminal, Frame,
@@ -202,6 +203,8 @@ fn run(mut terminal: DefaultTerminal) -> Result<()> {
 
 fn main() -> Result<()> {
     color_eyre::install()?;
+    updater::check_and_update()?;
+
     let terminal = ratatui::init();
     let result = run(terminal);
     ratatui::restore();
