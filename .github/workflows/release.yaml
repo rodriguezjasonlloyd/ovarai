@@ -54,10 +54,15 @@ jobs:
         with:
           path: artifacts
 
+      - name: Rename assets
+        run: |
+          mv artifacts/x86_64-pc-windows-msvc/ovarai.exe artifacts/x86_64-pc-windows-msvc.exe
+          mv artifacts/x86_64-unknown-linux-gnu/ovarai artifacts/x86_64-unknown-linux-gnu
+
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
-          files: artifacts/**/*
+          files: artifacts/*
           draft: false
           prerelease: false
         env:
