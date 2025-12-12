@@ -49,7 +49,7 @@ fn render_main_menu(frame: &mut Frame, app: &App) {
         MainMenuItem::all()
             .iter()
             .map(|item| {
-                let content = format!("{:?}", item);
+                let content = item.display().to_string();
                 let style = if *item == app.selected_main {
                     Style::default()
                         .fg(Color::Black)
@@ -103,7 +103,7 @@ fn render_analyze_menu(frame: &mut Frame, app: &App) {
         AnalyzeMenuItem::all()
             .iter()
             .map(|item| {
-                let content = format!("{:?}", item);
+                let content = item.display().to_string();
                 let style = if *item == app.selected_analyze {
                     Style::default()
                         .fg(Color::Black)
@@ -157,7 +157,7 @@ fn render_experiment_menu(frame: &mut Frame, app: &App) {
         ExperimentMenuItem::all()
             .iter()
             .map(|item| {
-                let content = format!("{:?}", item);
+                let content = item.display().to_string();
                 let style = if *item == app.selected_experiment {
                     Style::default()
                         .fg(Color::Black)
@@ -211,7 +211,7 @@ fn render_showcase_menu(frame: &mut Frame, app: &App) {
         ShowcaseMenuItem::all()
             .iter()
             .map(|item| {
-                let content = format!("{:?}", item);
+                let content = item.display().to_string();
                 let style = if *item == app.selected_showcase {
                     Style::default()
                         .fg(Color::Black)

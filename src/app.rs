@@ -19,6 +19,14 @@ impl MainMenuItem {
     pub fn all() -> [Self; 3] {
         [Self::Analyze, Self::Experiment, Self::Showcase]
     }
+
+    pub fn display(&self) -> &str {
+        match self {
+            Self::Analyze => "Analyze",
+            Self::Experiment => "Experiment",
+            Self::Showcase => "Showcase",
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -38,6 +46,15 @@ impl AnalyzeMenuItem {
             Self::TrainingResults,
         ]
     }
+
+    pub fn display(&self) -> &str {
+        match self {
+            Self::Dataset => "Describe Dataset",
+            Self::SampleBatch => "Show Sample Batch",
+            Self::TrainingGraphs => "Show Training Graphs",
+            Self::TrainingResults => "Show Training Results",
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -50,6 +67,13 @@ impl ExperimentMenuItem {
     pub fn all() -> [Self; 2] {
         [Self::All, Self::Selected]
     }
+
+    pub fn display(&self) -> &str {
+        match self {
+            Self::All => "Run All Experiments",
+            Self::Selected => "Run Selected Experiments",
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -61,6 +85,13 @@ pub enum ShowcaseMenuItem {
 impl ShowcaseMenuItem {
     pub fn all() -> [Self; 2] {
         [Self::Developer, Self::Demonstration]
+    }
+
+    pub fn display(&self) -> &str {
+        match self {
+            Self::Developer => "Launch Dashboard - Developer Mode",
+            Self::Demonstration => "Launch Dashboard - Demonstration Mode",
+        }
     }
 }
 
