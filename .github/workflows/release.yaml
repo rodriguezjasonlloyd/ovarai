@@ -19,11 +19,9 @@ jobs:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
             artifact_name: ovarai
-            asset_name: ovarai-x86_64-unknown-linux-gnu
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             artifact_name: ovarai.exe
-            asset_name: ovarai-x86_64-pc-windows-msvc.exe
 
     steps:
       - uses: actions/checkout@v4
@@ -54,15 +52,20 @@ jobs:
         with:
           path: artifacts
 
-      - name: Rename assets
+      - name: Prepare assets
         run: |
-          mv artifacts/x86_64-pc-windows-msvc/ovarai.exe artifacts/x86_64-pc-windows-msvc.exe
-          mv artifacts/x86_64-unknown-linux-gnu/ovarai artifacts/x86_64-unknown-linux-gnu
+          mkdir -p release
+          cp artifacts/x86_64-pc-windows-msvc/ovarai.exe release/ovarai-x86_64-pc-windows-msvc.exe
+          cp artifacts/x86_64-unknown-linux-gnu/ovarai release/ovarai-x86_64-unknown-linux-gnu
+          chmod +x release/ovarai-x86_64-unknown-linux-gnu
+
+      - name: List files
+        run: ls -la release/
 
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
-          files: artifacts/*
+          files: release/*
           draft: false
           prerelease: false
         env:
